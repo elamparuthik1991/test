@@ -4,9 +4,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-from iqoptionapi.stable_api import IQ_Option
-    Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
-    Iq.connect()
+
     
 @app.route('/')
 def hello():
@@ -15,12 +13,18 @@ def hello():
 # GET
 @app.route('/balance')
 def balance():
+    from iqoptionapi.stable_api import IQ_Option
+    Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
+    Iq.connect()
     Iq.change_balance("REAL")
     return str(Iq.get_balance())
 
 # GET
 @app.route('/close/<order_id>/<mode>')
 def close(order_id,mode):
+    from iqoptionapi.stable_api import IQ_Option
+    Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
+    Iq.connect()
     
     Iq.change_balance(mode)
     return str(Iq.close_position(order_id))
@@ -28,6 +32,10 @@ def close(order_id,mode):
 # GET
 @app.route('/open/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>/')
 def open(mode,instrument_type,instrument_id,side,amount):
+    from iqoptionapi.stable_api import IQ_Option
+    Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
+    Iq.connect()
+    
     Iq.change_balance(mode)
     instrument_type=instrument_type
     instrument_id=instrument_id
