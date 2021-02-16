@@ -9,6 +9,15 @@ def hello():
     return 'Hello World!'
 
 # GET
+@app.route('/balance')
+def balance():
+    from iqoptionapi.stable_api import IQ_Option
+    Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
+    Iq.connect()
+    Iq.change_balance(mode)
+    return Iq.get_balance()
+
+# GET
 @app.route('/close/<order_id>/<mode>')
 def close(order_id,mode):
     from iqoptionapi.stable_api import IQ_Option
