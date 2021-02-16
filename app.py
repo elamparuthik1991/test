@@ -14,7 +14,7 @@ def balance():
     from iqoptionapi.stable_api import IQ_Option
     Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
     Iq.connect()
-    Iq.change_balance(mode)
+    Iq.change_balance("REAL")
     return Iq.get_balance()
 
 # GET
