@@ -15,7 +15,7 @@ def balance():
     Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
     Iq.connect()
     Iq.change_balance("REAL")
-    return Iq.get_balance()
+    return str(Iq.get_balance())
 
 # GET
 @app.route('/close/<order_id>/<mode>')
@@ -24,7 +24,7 @@ def close(order_id,mode):
     Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
     Iq.connect()
     Iq.change_balance(mode)
-    return Iq.close_position(order_id)
+    return str(Iq.close_position(order_id))
 
 # GET
 @app.route('/open/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>/')
@@ -87,7 +87,7 @@ def open(mode,instrument_type,instrument_id,side,amount):
     #print(Iq.close_position(order_id))
     print(Iq.get_overnight_fee(instrument_type,instrument_id))
 
-    return order_id
+    return str(order_id)
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
