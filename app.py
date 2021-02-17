@@ -47,11 +47,11 @@ def open(mode,instrument_type,instrument_id,side,amount,sleep):
     leverages1 = Iq.get_available_leverages(instrument_type,instrument_id)
     if (leverages1.find("1000") != -1): 
         leverage =1000
-    else if(leverages1.find("500") != -1): 
+    elif(leverages1.find("500") != -1): 
         leverage =500
-    else if(leverages1.find("300") != -1): 
+    elif(leverages1.find("300") != -1): 
         leverage =300
-    else if(leverages1.find("200") != -1): 
+    elif(leverages1.find("200") != -1): 
         leverage =200
     else
         leverage =3000
