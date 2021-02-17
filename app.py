@@ -32,8 +32,8 @@ def close(order_id,mode):
     return str(Iq.close_position(order_id))
 
 # GET
-@app.route('/open/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>/<sleep>')
-def open(mode,instrument_type,instrument_id,side,amount,sleep):
+@app.route('/open/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>')
+def open(mode,instrument_type,instrument_id,side,amount):
     from iqoptionapi.stable_api import IQ_Option
     Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
     Iq.connect()
