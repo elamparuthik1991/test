@@ -1,12 +1,11 @@
 import os
-import sched 
+#import sched 
 import time
 from iqoptionapi.stable_api import IQ_Option
 from flask import Flask
 
 app = Flask(__name__)
-scheduler = sched.scheduler(time.time, 
-                            time.sleep)
+#scheduler = sched.scheduler(time.time, time.sleep)
 
     
 @app.route('/')
@@ -104,9 +103,9 @@ def open(mode,instrument_type,instrument_id,side,amount,sleep):
     #print(Iq.get_positions(instrument_type))
     #print(Iq.get_position_history(instrument_type))
     
-    scheduler.enter(sleep*60, 1, Iq.close_position(order_id), (' 2nd', ))
+    #scheduler.enter(sleep*60, 1, Iq.close_position(order_id), (' 2nd', ))
     # executing the events 
-    scheduler.run()
+    #scheduler.run()
     
     #print(Iq.get_overnight_fee(instrument_type,instrument_id))
 
