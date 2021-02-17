@@ -1,9 +1,12 @@
 import os
+import sched 
+import time
 from iqoptionapi.stable_api import IQ_Option
 from flask import Flask
 
 app = Flask(__name__)
-
+scheduler = sched.scheduler(time.time, 
+                            time.sleep)
 
     
 @app.route('/')
@@ -30,8 +33,8 @@ def close(order_id,mode):
     return str(Iq.close_position(order_id))
 
 # GET
-@app.route('/open/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>/')
-def open(mode,instrument_type,instrument_id,side,amount):
+@app.route('/open/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>/<sleep>')
+def open(mode,instrument_type,instrument_id,side,amount,sleep):
     from iqoptionapi.stable_api import IQ_Option
     Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
     Iq.connect()
@@ -42,8 +45,21 @@ def open(mode,instrument_type,instrument_id,side,amount):
     side=side#input:"buy"/"sell"
     amount=amount#input how many Amount you want to play
     
+    leverages1 = Iq.get_available_leverages(instrument_type,instrument_id))
+    if (leverages1.find("1000") != -1): 
+        leverage =1000
+    else if(leverages1.find("500") != -1): 
+        leverage =500
+    else if(leverages1.find("300") != -1): 
+        leverage =300
+    else if(leverages1.find("200") != -1): 
+        leverage =200
+    else
+        leverage =3000
+    
+    
     #"leverage"="Multiplier"
-    leverage=3#you can get more information in get_available_leverages()
+    #leverage=3#you can get more information in get_available_leverages()
     
     type="market"#input:"market"/"limit"/"stop"
     
@@ -84,12 +100,15 @@ def open(mode,instrument_type,instrument_id,side,amount):
                 take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
                 use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
                 use_token_for_commission=use_token_for_commission)
-    print(Iq.get_order(order_id))
-    print(Iq.get_positions(instrument_type))
-    print(Iq.get_position_history(instrument_type))
-    print(Iq.get_available_leverages(instrument_type,instrument_id))
-    #print(Iq.close_position(order_id))
-    print(Iq.get_overnight_fee(instrument_type,instrument_id))
+    Iq.get_order(order_id)
+    #print(Iq.get_positions(instrument_type))
+    #print(Iq.get_position_history(instrument_type))
+    
+    scheduler.enter(sleep*60, 1, Iq.close_position(order_id), (' 2nd', ))
+    # executing the events 
+    scheduler.run()
+    
+    #print(Iq.get_overnight_fee(instrument_type,instrument_id))
 
     return str(order_id)
 
