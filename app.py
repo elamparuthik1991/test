@@ -38,6 +38,7 @@ def open(mode,instrument_type,instrument_id,side,amount):
     Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
     Iq.connect()
     
+        
     Iq.change_balance(mode)
     instrument_type=instrument_type
     instrument_id=instrument_id
@@ -92,13 +93,17 @@ def open(mode,instrument_type,instrument_id,side,amount):
     
     use_token_for_commission=False#True/False
     
-    check,order_id=Iq.buy_order(instrument_type=instrument_type, instrument_id=instrument_id,
-                side=side, amount=amount,leverage=leverage,
-                type=type,limit_price=limit_price, stop_price=stop_price,
-                stop_lose_value=stop_lose_value, stop_lose_kind=stop_lose_kind,
-                take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
-                use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
-                use_token_for_commission=use_token_for_commission)
+    try:
+        check,order_id=Iq.buy_order(instrument_type=instrument_type, instrument_id=instrument_id,
+                    side=side, amount=amount,leverage=leverage,
+                    type=type,limit_price=limit_price, stop_price=stop_price,
+                    stop_lose_value=stop_lose_value, stop_lose_kind=stop_lose_kind,
+                    take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
+                    use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
+                    use_token_for_commission=use_token_for_commission)
+    except:
+        order_id=0
+        
     Iq.get_order(order_id)
     #print(Iq.get_positions(instrument_type))
     #print(Iq.get_position_history(instrument_type))
@@ -108,7 +113,8 @@ def open(mode,instrument_type,instrument_id,side,amount):
     #scheduler.run()
     
     #print(Iq.get_overnight_fee(instrument_type,instrument_id))
-
+    
+        
     return str(order_id)
 
 if __name__ == '__main__':
