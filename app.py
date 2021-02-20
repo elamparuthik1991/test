@@ -57,6 +57,7 @@ def open(mode,instrument_type,instrument_id,side,amount):
     elif(leverages1.find("200") != -1): 
         leverage =200
     
+    leverage=5
     
     #"leverage"="Multiplier"
     #leverage=3#you can get more information in get_available_leverages()
