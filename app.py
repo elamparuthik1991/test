@@ -105,6 +105,7 @@ def open(mode,instrument_type,instrument_id,side,amount):
     except:
         order_id=0
         
+    print("++++++++++++"+str(order_id))
     print(Iq.get_order(order_id))
     #print(Iq.get_positions(instrument_type))
     #print(Iq.get_position_history(instrument_type))
