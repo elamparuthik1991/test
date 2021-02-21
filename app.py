@@ -45,7 +45,7 @@ def open(mode,instrument_type,instrument_id,side,amount):
     side=side#input:"buy"/"sell"
     amount=amount#input how many Amount you want to play
     
-    leverage =300
+    #leverage =300
     
     leverages1 = str(Iq.get_available_leverages(instrument_type,instrument_id))
     if (leverages1.find("1000") != -1): 
@@ -57,7 +57,7 @@ def open(mode,instrument_type,instrument_id,side,amount):
     elif(leverages1.find("200") != -1): 
         leverage =200
     
-    leverage=5
+    #leverage=5
     
     #"leverage"="Multiplier"
     #leverage=3#you can get more information in get_available_leverages()
