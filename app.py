@@ -3,6 +3,11 @@ import os
 import time
 from iqoptionapi.stable_api import IQ_Option
 from flask import Flask
+import firebase_admin
+from firebase_admin import credentials
+
+cred = credentials.Certificate("./pythonfirestorekey.json")
+firebase_admin.initialize_app(cred)
 
 app = Flask(__name__)
 #scheduler = sched.scheduler(time.time, time.sleep)
