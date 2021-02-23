@@ -2,7 +2,7 @@ import os
 #import sched 
 import time
 from iqoptionapi.stable_api import IQ_Option
-from flask import Flask
+from flask import Flask, request, jsonify
 import firebase_admin
 from firebase_admin import credentials
 
