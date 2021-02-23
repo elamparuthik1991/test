@@ -2,3 +2,4 @@ Flask
 Jinja2
 Werkzeug
 -e git+git://github.com/iqoptionapi/iqoptionapi.git#egg=iqoptionapi
+firebase_admin
