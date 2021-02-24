@@ -39,7 +39,7 @@ def close(email1,pass1,order_id,mode):
 
 # GET
 @app.route('/open/<email1>/<pass1>/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>')
-def open(email,pass,mode,instrument_type,instrument_id,side,amount):
+def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     from iqoptionapi.stable_api import IQ_Option
     Iq=IQ_Option(str(email1),str(pass1))
     Iq.connect()
