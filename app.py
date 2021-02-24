@@ -19,29 +19,29 @@ def hello():
     return 'Hello World!'
 
 # GET
-@app.route('/balance')
-def balance():
+@app.route('/balance/<email>/<pass>')
+def balance(email,pass):
     from iqoptionapi.stable_api import IQ_Option
-    Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
+    Iq=IQ_Option(str(email),str(pass))
     Iq.connect()
     Iq.change_balance("REAL")
     return str(Iq.get_balance())
 
 # GET
-@app.route('/close/<order_id>/<mode>')
-def close(order_id,mode):
+@app.route('/close/<email>/<pass>/<order_id>/<mode>')
+def close(email,pass,order_id,mode):
     from iqoptionapi.stable_api import IQ_Option
-    Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
+    Iq=IQ_Option(str(email),str(pass))
     Iq.connect()
     
     Iq.change_balance(mode)
     return str(Iq.close_position(order_id))
 
 # GET
-@app.route('/open/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>')
-def open(mode,instrument_type,instrument_id,side,amount):
+@app.route('/open/<email>/<pass>/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>')
+def open(email,pass,mode,instrument_type,instrument_id,side,amount):
     from iqoptionapi.stable_api import IQ_Option
-    Iq=IQ_Option("elamparuthik1991@gmail.com","Chennai@1991")
+    Iq=IQ_Option(str(email),str(pass))
     Iq.connect()
     
         
