@@ -28,20 +28,20 @@ def balance(email1,pass1):
     return str(Iq.get_balance())
 
 # GET
-@app.route('/close/<email>/<pass>/<order_id>/<mode>')
-def close(email,pass,order_id,mode):
+@app.route('/close/<email1>/<pass1>/<order_id>/<mode>')
+def close(email1,pass1,order_id,mode):
     from iqoptionapi.stable_api import IQ_Option
-    Iq=IQ_Option(str(email),str(pass))
+    Iq=IQ_Option(str(email1),str(pass1))
     Iq.connect()
     
     Iq.change_balance(mode)
     return str(Iq.close_position(order_id))
 
 # GET
-@app.route('/open/<email>/<pass>/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>')
+@app.route('/open/<email1>/<pass1>/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>')
 def open(email,pass,mode,instrument_type,instrument_id,side,amount):
     from iqoptionapi.stable_api import IQ_Option
-    Iq=IQ_Option(str(email),str(pass))
+    Iq=IQ_Option(str(email1),str(pass1))
     Iq.connect()
     
         
