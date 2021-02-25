@@ -3,15 +3,17 @@ import os
 import time
 from iqoptionapi.stable_api import IQ_Option
 from flask import Flask, request, jsonify
-import firebase_admin
-from firebase_admin import credentials
+from firebase_admin import credentials, firestore, initialize_app
 
 
 app = Flask(__name__)
 #scheduler = sched.scheduler(time.time, time.sleep)
 
-cred = credentials.Certificate("./pythonfirestorekey.json")
-firebase_admin.initialize_app(cred)
+# Initialize Firestore DB
+cred = credentials.Certificate('pythonfirestorekey.json')
+default_app = initialize_app(cred)
+db = firestore.client()
+todo_ref = db.collection('Cron')
 
     
 @app.route('/')
