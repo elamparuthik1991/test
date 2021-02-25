@@ -12,8 +12,7 @@ app = Flask(__name__)
 # Initialize Firestore DB
 cred = credentials.Certificate('pythonfirestorekey.json')
 default_app = initialize_app(cred)
-db = firestore.client()
-todo_ref = db.collection('Cron')
+
 
     
 @app.route('/')
@@ -135,6 +134,8 @@ def create():
         e.g. json={'id': '1', 'title': 'Write a blog post'}
     """
     try:
+        db = firestore.client()
+todo_ref = db.collection('Cron')
         # Check if ID was passed to URL query
         todo_id = request.args.get('id')
         if todo_id:
@@ -155,6 +156,8 @@ def read():
         all_todos : Return all documents.
     """
     try:
+        db = firestore.client()
+todo_ref = db.collection('Cron')
         # Check if ID was passed to URL query
         todo_id = request.args.get('id')
         if todo_id:
@@ -174,6 +177,8 @@ def update():
         e.g. json={'id': '1', 'title': 'Write a blog post today'}
     """
     try:
+        db = firestore.client()
+todo_ref = db.collection('Cron')
         id = request.json['id']
         todo_ref.document(id).update(request.json)
         return jsonify({"success": True}), 200
@@ -186,6 +191,8 @@ def delete():
         delete() : Delete a document from Firestore collection.
     """
     try:
+        db = firestore.client()
+todo_ref = db.collection('Cron')
         # Check for ID in URL query
         todo_id = request.args.get('id')
         todo_ref.document(todo_id).delete()
