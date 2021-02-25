@@ -134,12 +134,11 @@ def create():
         Ensure you pass a custom ID as part of json body in post request,
         e.g. json={'id': '1', 'title': 'Write a blog post'}
     """
-    try:
+    
         id = request.json['id']
         todo_ref.document(id).set(request.json)
         return jsonify({"success": True}), 200
-    except Exception as e:
-        return f"An Error Occured: {e}"
+    
 
 @app.route('/list', methods=['GET'])
 def read():
