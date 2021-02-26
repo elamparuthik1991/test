@@ -100,6 +100,7 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
                     take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
                     use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
                     use_token_for_commission=use_token_for_commission)
+        print("hhhhhh"+check)
     except:
         order_id=0
         
