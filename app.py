@@ -30,7 +30,7 @@ def close(email1,pass1,order_id,mode):
     Iq.change_balance(mode)
     return str(Iq.close_position(order_id))
 
-# GET
+# GET /open/email/pass/PRACTICE/crypto/ETHUSD/buy/10
 @app.route('/open/<email1>/<pass1>/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>')
 def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     from iqoptionapi.stable_api import IQ_Option
@@ -56,7 +56,7 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     elif(leverages1.find("200") != -1): 
         leverage =200
     
-    
+    #leverage =500
     #"leverage"="Multiplier"
     #leverage=3#you can get more information in get_available_leverages()
     
