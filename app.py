@@ -45,7 +45,7 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     amount=amount#input how many Amount you want to play
     
     leverage =3
-    
+    print("1___________________________________________________________________________")
     leverages1 = str(Iq.get_available_leverages(instrument_type,instrument_id))
     if (leverages1.find("1000") != -1): 
         leverage =1000
@@ -55,7 +55,7 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
         leverage =300
     elif(leverages1.find("200") != -1): 
         leverage =200
-    
+    print("2++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     #leverage =500
     #"leverage"="Multiplier"
     #leverage=3#you can get more information in get_available_leverages()
@@ -91,7 +91,7 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     #            "stop_lose_value" all being "Not Set","auto_margin_call" need to set:True
     
     use_token_for_commission=False#True/False
-    
+    print("3++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     try:
         check,order_id=Iq.buy_order(instrument_type=instrument_type, instrument_id=instrument_id,
                     side=side, amount=amount,leverage=leverage,
