@@ -43,6 +43,7 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     instrument_id=instrument_id
     side=side#input:"buy"/"sell"
     amount=amount#input how many Amount you want to play
+    order_id =0
     
     leverage =3
     print("1___________________________________________________________________________")
@@ -92,13 +93,7 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     
     use_token_for_commission=False#True/False
     print("3++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-     print("try++++++++++++++++++++++++++++++++++++"+instrument_type+"--"+instrument_id+"--"+
-                    side+"--"+amount+"--"+leverage+"--"+
-                    type+"--"+limit_price+"--"+ stop_price+"--"+
-                    stop_lose_value+"--"+ stop_lose_kind+"--"+
-                    take_profit_value+"--"+ take_profit_kind+"--"+
-                    use_trail_stop+"--"+auto_margin_call+"--"+
-                   use_token_for_commission)
+    
     try:
         check,order_id=Iq.buy_order(instrument_type=instrument_type, instrument_id=instrument_id,
                     side=side, amount=amount,leverage=leverage,
