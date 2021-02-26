@@ -46,7 +46,7 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     order_id =0
     
     leverage =3
-    print("1___________________________________________________________________________")
+    
     leverages1 = str(Iq.get_available_leverages(instrument_type,instrument_id))
     if (leverages1.find("1000") != -1): 
         leverage =1000
@@ -56,7 +56,7 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
         leverage =300
     elif(leverages1.find("200") != -1): 
         leverage =200
-    print("2++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        
     #leverage =500
     #"leverage"="Multiplier"
     #leverage=3#you can get more information in get_available_leverages()
@@ -92,7 +92,6 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     #            "stop_lose_value" all being "Not Set","auto_margin_call" need to set:True
     
     use_token_for_commission=False#True/False
-    print("3++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     
     try:
         check,order_id=Iq.buy_order(instrument_type=instrument_type, instrument_id=instrument_id,
@@ -102,11 +101,9 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
                     take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
                     use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
                     use_token_for_commission=use_token_for_commission)
-        print("hhhhhh"+check)
     except:
         order_id=0
         
-    print("++++++++++++"+str(order_id))
     print(Iq.get_order(order_id))
     #print(Iq.get_positions(instrument_type))
     #print(Iq.get_position_history(instrument_type))
@@ -117,7 +114,6 @@ def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
     
     #print(Iq.get_overnight_fee(instrument_type,instrument_id))
     
-        
     return str(order_id)
 
 if __name__ == '__main__':
