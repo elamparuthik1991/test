@@ -23,6 +23,7 @@ def balance(email1,pass1,mode1):
 # GET
 @app.route('/close/<email1>/<pass1>/<order_id>/<mode>')
 def close(email1,pass1,order_id,mode):
+    from iqoptionapi.stable_api import IQ_Option
     Iq=IQ_Option(str(email1),str(pass1))
     Iq.connect()
     
@@ -32,6 +33,7 @@ def close(email1,pass1,order_id,mode):
 # GET /open/email/pass/PRACTICE/crypto/ETHUSD/buy/10
 @app.route('/open/<email1>/<pass1>/<mode>/<instrument_type>/<instrument_id>/<side>/<amount>')
 def open(email1,pass1,mode,instrument_type,instrument_id,side,amount):
+    from iqoptionapi.stable_api import IQ_Option
     Iq=IQ_Option(str(email1),str(pass1))
     Iq.connect()
     
