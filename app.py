@@ -12,12 +12,12 @@ def hello():
     return 'Hello World!'
 
 # GET
-@app.route('/balance/<email1>/<pass1>')
-def balance(email1,pass1):
+@app.route('/balance/<email1>/<pass1>/<mode>')
+def balance(email1,pass1,mode):
     from iqoptionapi.stable_api import IQ_Option
     Iq=IQ_Option(str(email1),str(pass1))
     Iq.connect()
-    Iq.change_balance("REAL")
+    Iq.change_balance(mode)
     return str(Iq.get_balance())
 
 # GET
