@@ -14,6 +14,7 @@ def hello():
 # GET
 @app.route('/balance/<email1>/<pass1>/<mode1>')
 def balance(email1,pass1,mode1):
+    from iqoptionapi.stable_api import IQ_Option
     Iq=IQ_Option(str(email1),str(pass1))
     Iq.connect()
     Iq.change_balance(mode1)
