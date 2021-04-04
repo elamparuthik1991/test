@@ -1,6 +1,7 @@
 import os
 #import sched 
 import time
+import pytz
 from iqoptionapi.stable_api import IQ_Option
 from flask import Flask, request, jsonify
 
@@ -10,6 +11,15 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     return 'Hello World!'
+# GET
+@app.route('/zone/<zoneid>')
+def zone(zoneid):
+    from datetime import datetime
+    utcmoment_naive = datetime.utcnow()
+    utcmoment = utcmoment_naive.replace(tzinfo=pytz.utc)
+    localFormat = "%Y-%m-%d %H:%M:%S"
+    localDatetime = utcmoment.astimezone(pytz.timezone(zoneid))
+    return str(localDatetime.strftime(localFormat))
 
 # GET
 @app.route('/balance/<email1>/<pass1>/<mode1>')
