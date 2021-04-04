@@ -19,7 +19,10 @@ def zone(zoneid):
     utcmoment = utcmoment_naive.replace(tzinfo=pytz.utc)
     localFormat = "%Y-%m-%d %H:%M:%S"
     localDatetime = utcmoment.astimezone(pytz.timezone(zoneid.replace("-","/")))
-    return str(localDatetime.strftime(localFormat))
+    IST = utcmoment.astimezone(pytz.timezone('IST')))
+    
+    td = localDatetime - IST
+    return str(td.strftime(localFormat))
 
 # GET
 @app.route('/balance/<email1>/<pass1>/<mode1>')
