@@ -1,5 +1,6 @@
 Flask
 Jinja2
 Werkzeug
+pytz
 websocket-client==0.56
 -e git+git://github.com/iqoptionapi/iqoptionapi.git#egg=iqoptionapi
