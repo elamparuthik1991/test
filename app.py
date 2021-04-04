@@ -18,11 +18,11 @@ def zone(zoneid):
     utcmoment_naive = datetime.utcnow()
     utcmoment = utcmoment_naive.replace(tzinfo=pytz.utc)
     localFormat = "%Y-%m-%d %H:%M:%S"
-    givenDatetime = utcmoment.astimezone(pytz.timezone(zoneid.replace("-","/")))
-    localolocal = utcmoment.astimezone(pytz.timezone('Asia/Kolkata'))
+    givenDatetime = str(utcmoment.astimezone(pytz.timezone(zoneid.replace("-","/"))))
+    localolocal = str(utcmoment.astimezone(pytz.timezone('Asia/Kolkata')))
     
-    tstamp1 =str(datetime.strptime(localolocal, localFormat))
-    tstamp2 =str(datetime.strptime(givenDatetime, localFormat))
+    tstamp1 =datetime.strptime(localolocal, localFormat)
+    tstamp2 =datetime.strptime(givenDatetime, localFormat)
     td = tstamp1 -tstamp2
     td_mins = int(round(td.total_seconds() / 60))
     return str(td_mins)
