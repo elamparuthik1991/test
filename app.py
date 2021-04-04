@@ -19,7 +19,7 @@ def zone(zoneid):
     utcmoment = utcmoment_naive.replace(tzinfo=pytz.utc)
     localFormat = "%Y-%m-%d %H:%M:%S"
     localDatetime = utcmoment.astimezone(pytz.timezone(zoneid.replace("-","/")))
-    IST = utcmoment.astimezone(pytz.timezone('IST')))
+    IST = utcmoment.astimezone(pytz.timezone('Asia-Colcatta')))
     
     td = IST -localDatetime
     return str(td.strftime(localFormat))
