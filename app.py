@@ -21,7 +21,7 @@ def zone(zoneid):
     localDatetime = utcmoment.astimezone(pytz.timezone(zoneid.replace("-","/")))
     IST = utcmoment.astimezone(pytz.timezone('IST')))
     
-    td = localDatetime - IST
+    td = IST -localDatetime
     return str(td.strftime(localFormat))
 
 # GET
