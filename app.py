@@ -17,7 +17,7 @@ def zone(zoneid):
     from datetime import datetime
     utcmoment_naive = datetime.utcnow()
     utcmoment = utcmoment_naive.replace(tzinfo=pytz.utc)
-    localFormat = "%Y-%m-%d %H:%M:%S"
+    localFormat = "%Y-%m-%d %H:%M"
     givenDatetime = str(utcmoment.astimezone(pytz.timezone(zoneid.replace("-","/"))))
     localolocal = str(utcmoment.astimezone(pytz.timezone('Asia/Kolkata')))
     
