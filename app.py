@@ -22,8 +22,9 @@ def zone(zoneid):
     IST = utcmoment.astimezone(pytz.timezone('Asia/Kolkata'))
     
     td = IST -localDatetime
-    return str(td.strftime(localFormat))
-
+    td_mins = int(round(td.total_seconds() / 60))
+    return str(td_mins)
+              
 # GET
 @app.route('/balance/<email1>/<pass1>/<mode1>')
 def balance(email1,pass1,mode1):
