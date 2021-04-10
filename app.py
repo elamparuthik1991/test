@@ -11,22 +11,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     return 'Hello World!'
-# GET
-@app.route('/zone/<zoneid>')
-def zone(zoneid):
-    from datetime import datetime
-    utcmoment_naive = datetime.utcnow()
-    utcmoment = utcmoment_naive.replace(tzinfo=pytz.utc)
-    localFormat = "%Y-%m-%d %H:%M"
-    givenDatetime = str(utcmoment.astimezone(pytz.timezone(zoneid.replace("-","/"))))
-    localolocal = str(utcmoment.astimezone(pytz.timezone('Asia/Kolkata')))
-    
-    tstamp1 =datetime.strptime(localolocal, localFormat)
-    tstamp2 =datetime.strptime(givenDatetime, localFormat)
-    td = tstamp1 -tstamp2
-    td_mins = int(round(td.total_seconds() / 60))
-    return str(td_mins)
-              
+
 # GET
 @app.route('/balance/<email1>/<pass1>/<mode1>')
 def balance(email1,pass1,mode1):
