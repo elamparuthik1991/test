@@ -7,3 +7,8 @@ Permission denied for நிமிஸ்
 
 Permission denied for செகிஸ்
 
+
+permission only for கூஜூபூ.
+
+
+
